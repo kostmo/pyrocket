@@ -118,7 +118,7 @@ class VideoWindow(gtk.Frame):
 
 		if self.inverted_video.get_active():
 			highgui.cvConvertImage(webcam_frame, webcam_frame, highgui.CV_CVTIMG_FLIP)
-#		highgui.cvConvertImage(webcam_frame, self.display_frame, highgui.CV_CVTIMG_SWAP_RB)
+		highgui.cvConvertImage(webcam_frame, self.display_frame, highgui.CV_CVTIMG_SWAP_RB)
 
 
 		'''

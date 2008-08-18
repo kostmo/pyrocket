@@ -12,17 +12,12 @@ Homepage: http://kostmo.ath.cx/software/pyrocket/
 Package: pyrocket
 Architecture: all
 Depends: ${python:Depends}, python-gtk2, python-pyusb, python-pygame
-Description: PyGTK control of Striker II and Dream Cheeky USB Missile Launchers
- pyrocket is a PyGTK application to operate the USB foam dart launchers
- from Linux.  For some models, it has considerably more functionality than
- the accompanying Windows(R) driver software.
+Description: control Striker II and Dream Cheeky USB Missile Launchers
+ pyrocket is used to operate USB foam dart launchers. For some models, it has
+ considerably more functionality than the drivers provided with the launchers.
  .
- The .deb installer will give user-permissions to the USB device. Automatic
- detection of the launcher device and a joystick is performed at runtime. A
- video window is also provided, in case you have the webcam-enabled device
- or decide to affix your own webcam to the launcher.
- .
- pyrocket currently supports at least three different rocket launcher models:
- the "original" and the "webcam" USB Missile Launchers sold by Dream Cheeky,
- and Striker II USB Laser Guided Missile Launcher sold by Ninja Gizmos.
+ pyrocket automatically detects the launcher(s) and a joystick. For a webcam-
+ enabled device, a video window is provided. pyrocket currently supports the
+ "original" and "webcam" USB Missile Launchers sold by Dream Cheeky, and
+ Striker II USB Laser Guided Missile Launcher sold by Ninja Gizmos.
 

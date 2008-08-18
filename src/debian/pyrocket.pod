@@ -8,14 +8,11 @@ pyrocket
 
 =head1 DESCRIPTION
 
-B<pyrocket> is a PyGTK application to operate the USB foam dart launchers
-from Linux.  For some models, it has considerably more functionality than
-the accompanying Windows(R) driver software.
+B<pyrocket> is used to operate USB foam dart launchers. For some models, it has
+considerably more functionality than the drivers provided with the launchers.
 
-The .deb installer will give user-permissions to the USB device. Automatic
-detection of the launcher device and a joystick is performed at runtime. A
-video window is also provided, in case you have the webcam-enabled device
-or decide to affix your own webcam to the launcher.
+pyrocket automatically detects the launcher(s) and a joystick. For a webcam-
+enabled device, a video window is provided.
 
 =head1 HARDWARE SUPPORT
 

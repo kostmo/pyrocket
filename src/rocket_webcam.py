@@ -110,14 +110,18 @@ class VideoWindow(gtk.Frame):
 
 	def run(self):
 
-		webcam_frame = highgui.cvQueryFrame( self.capture )
+		if self.capture:
+			webcam_frame = highgui.cvQueryFrame( self.capture )
+		else:
+			print "Capture failed!"
+			return
 
 		if self.inverted_video.get_active():
 			highgui.cvConvertImage(webcam_frame, webcam_frame, highgui.CV_CVTIMG_FLIP)
 #		highgui.cvConvertImage(webcam_frame, self.display_frame, highgui.CV_CVTIMG_SWAP_RB)
 
 
-
+		'''
 		# PROCESS WEBCAM FRAME HERE...
 		inputImage = cv.cvCreateImage(cv.cvGetSize(webcam_frame), cv.IPL_DEPTH_8U, 1)
 		cv.cvCvtColor(webcam_frame, inputImage, cv.CV_RGB2GRAY);
@@ -146,7 +150,7 @@ class VideoWindow(gtk.Frame):
 
 		cv.cvMerge( inputImage, inputImage, inputImage, None, self.display_frame )
 #		cv.cvMerge( tiled_index_rows, tiled_index_rows, tiled_index_rows, None, self.display_frame )
-
+		'''
 
 
 

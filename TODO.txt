@@ -1,0 +1,13 @@
+FEATURES:
+=========
+
+-> Use DBUS to monitor for more Rocket Launchers
+
+
+-> Upload to Ubuntu repository
+
+
+-> Add support for strictly CLI interface
+
+
+-> Add computer vision component

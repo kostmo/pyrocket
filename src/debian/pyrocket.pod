@@ -1,0 +1,70 @@
+=head1 NAME
+
+pyrocket - PyGTK control of Striker II and Dream Cheeky USB Missile Launchers
+
+=head1 SYNOPSIS
+
+pyrocket
+
+=head1 DESCRIPTION
+
+B<pyrocket> is a PyGTK application to operate the USB foam dart launchers
+from Linux.  For some models, it has considerably more functionality than
+the accompanying Windows(R) driver software.
+
+The .deb installer will give user-permissions to the USB device. Automatic
+detection of the launcher device and a joystick is performed at runtime. A
+video window is also provided, in case you have the webcam-enabled device
+or decide to affix your own webcam to the launcher.
+
+=head1 HARDWARE SUPPORT
+
+B<pyrocket> has been thoroughly tested on three devices:
+* The "original" USB Missile Launcher sold by Dream Cheeky.
+* The "webcam" USB MSN Missile Launcher sold by Dream Cheeky.
+* The Striker II USB Laser Guided Missile Launcher sold by Ninja Gizmos
+
+All hardware features are supported on these three devices, including the
+Striker II laser control and sensors for position extrema on the Dream Cheeky
+models.
+
+=head1 BUGS
+
+=item B<Spontaneous movement on startup>
+
+With a joystick connected, the launcher spontaneously starts moving on startup.
+It does this every time the program is run after plugging in the joystick,
+until any one of the joystick buttons (including D-pad) is pressed (this can be
+done at any time after connecting).  This is probably a bug in PyGame.
+
+B<Workaround:> Press any button on the joystick after connecting it to USB.
+
+=item B<Stuck limit switch>
+
+The "right" limit-switch has been observed to stick in the "on" position.  It
+remains so even after unplugging/replugging the launcher device.  This may be a
+mechanical issue.
+
+B<Workaround:> Enable the "Override" feature, then move to the right-most extreme
+and back again.
+
+=head1 AUTHORS
+
+B<pyrocket> was written by Karl Ostmo <kostmo@gmail.com>.
+
+=head1 ACKNOWLEDGEMENTS
+
+Reverse engineering of the USB control messages for each rocket launcher was
+accomplished with SnoopyPro: http://sourceforge.net/projects/usbsnoop/
+
+=head1 COPYRIGHT
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2, or (at your option) any
+later version.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+=cut

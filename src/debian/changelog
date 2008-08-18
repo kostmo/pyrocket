@@ -1,0 +1,7 @@
+pyrocket (0.5-0ubuntu1) intrepid; urgency=low
+
+  * Initial Ubuntu package (LP: #242910)
+  - Added man page (pyrocket.6)
+  - Added debian/watch
+
+ -- Karl Ostmo <kostmo@gmail.com>  Thu, 07 Aug 2008 22:21:07 -0500

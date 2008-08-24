@@ -40,7 +40,11 @@ class RocketWindow(StatefulJoystick):
 #		self.window.set_title(u"Dream Cheeky\u0099 Control")	# The "TM" symbol doesn't work in GNOME
 #		self.window.set_title(u"Dream Cheeky\u00AE Control")
 		self.window.set_title("USB Rocket Launcher Control")
-		self.window.set_icon_from_file(self.img_path + "pyrocket.png")
+
+		icon_path = self.img_path + "pyrocket.png"
+		self.window.set_icon_from_file( icon_path )
+		self.status_icon = gtk.status_icon_new_from_file( icon_path )
+		self.status_icon.set_visible( True )
 
 		self.window.connect("delete_event", self.delete_event)
 		self.window.connect("key_press_event", self.handle_keyboard_press_event)

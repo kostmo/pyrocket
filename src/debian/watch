@@ -1,5 +1,4 @@
 version=3
-
-http://kostmo.ath.cx/software/pyrocket/pyrocket-(.*)\.tar\.gz debian uupdate
+http://pyrocket.googlecode.com/files/pyrocket(.*)\.tar\.gz debian uupdate
 
 

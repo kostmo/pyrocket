@@ -121,36 +121,33 @@ class VideoWindow(gtk.Frame):
 		highgui.cvConvertImage(webcam_frame, self.display_frame, highgui.CV_CVTIMG_SWAP_RB)
 
 
-		'''
-		# PROCESS WEBCAM FRAME HERE...
-		inputImage = cv.cvCreateImage(cv.cvGetSize(webcam_frame), cv.IPL_DEPTH_8U, 1)
-		cv.cvCvtColor(webcam_frame, inputImage, cv.CV_RGB2GRAY);
-
-		cv.cvThreshold(inputImage, inputImage, 128, 255, cv.CV_THRESH_BINARY)
-
-		mysize = cv.cvGetSize(webcam_frame)
-		height = mysize.height
-		width = mysize.width
-
-		# Find horizontal first-moment:
-
-		import adaptors
-		test = adaptors.Ipl2NumPy(inputImage)
-		print "yay"
 
 
-		import Numeric
-		myweight = Numeric.array(range(width))
-		print "Generated weights"
-#		mysum_array, val_count = Numeric.average(test, 1, myweight)
-		mysum_array, val_count = Numeric.average(myweight, 0, myweight)
-		print "Generated average"
-		mysum = Numeric.sum(mysum_array)
-		print "Sum:", mysum
 
-		cv.cvMerge( inputImage, inputImage, inputImage, None, self.display_frame )
-#		cv.cvMerge( tiled_index_rows, tiled_index_rows, tiled_index_rows, None, self.display_frame )
-		'''
+
+		if False:
+			# PROCESS WEBCAM FRAME HERE...
+			inputImage = cv.cvCreateImage(cv.cvGetSize(webcam_frame), cv.IPL_DEPTH_8U, 1)
+			cv.cvCvtColor(webcam_frame, inputImage, cv.CV_RGB2GRAY);
+
+			cv.cvThreshold(inputImage, inputImage, 128, 255, cv.CV_THRESH_BINARY)
+
+			mysize = cv.cvGetSize(webcam_frame)
+			height = mysize.height
+			width = mysize.width
+
+
+			# Find horizontal first-moment:
+			if False:
+				mysum = 0
+				for i in range(height):
+					mysum += sum(inputImage[i,:])
+
+				print "Sum:", mysum
+
+			cv.cvMerge( inputImage, inputImage, inputImage, None, self.display_frame )
+
+
 
 
 

@@ -16,12 +16,13 @@ enabled device, a video window is provided.
 
 =head1 HARDWARE SUPPORT
 
-B<pyrocket> has been thoroughly tested on three devices:
-* The "original" USB Missile Launcher sold by Dream Cheeky.
-* The "webcam" USB MSN Missile Launcher sold by Dream Cheeky.
+B<pyrocket> has been thoroughly tested on these devices:
+* The Yellow/Red USB Circus Cannon sold by Dream Cheeky.
+* The "original" Green/Black USB Missile Launcher sold by Dream Cheeky.
+* The "webcam" Blue/Black USB MSN Missile Launcher sold by Dream Cheeky.
 * The Striker II USB Laser Guided Missile Launcher sold by Ninja Gizmos
 
-All hardware features are supported on these three devices, including the
+All hardware features are supported on these devices, including the
 Striker II laser control and sensors for position extrema on the Dream Cheeky
 models.
 

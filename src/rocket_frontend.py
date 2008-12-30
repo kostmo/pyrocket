@@ -90,16 +90,28 @@ class RocketWindow(StatefulJoystick):
 		self.camera_widget_visible.connect("toggled", self.cb_toggle_show_camera)
 		view_submenu.append( self.camera_widget_visible )
 
-		help_menu = gtk.MenuItem("_Help")
-		help_submenu = gtk.Menu()
+		top_menu.append( view_menu )
 
+
+		help_menu = gtk.MenuItem("_Application")
+		help_submenu = gtk.Menu()
 		help_menu.set_submenu( help_submenu )
-		about_item = gtk.MenuItem("About")
+		about_item = gtk.MenuItem("_About")
 		about_item.connect("activate", self.cb_about_dialog)
 		help_submenu.append( about_item )
 
+		quit_item = gtk.MenuItem("_Quit")
+		quit_item.connect("activate", self.destroy)
+		help_submenu.append( quit_item )
+
 		top_menu.append( help_menu )
-		top_menu.append( view_menu )
+
+
+
+
+
+
+
 
 
 		# ----------------------------
@@ -199,15 +211,21 @@ class RocketWindow(StatefulJoystick):
 		self.status_message_index = 1
 		self.last_message_id = None
 		self.cycle_status_message()
+
 	# ===============================
 
 	def cb_toggle_show_camera(self, widget):
 		if widget.get_active():
+
+			self.video.start_video()
+
 			self.video.show()
 			self.video.video_enabled_button.set_active(True)
 		else:
 			self.video.video_enabled_button.set_active(False)
 			self.video.hide()
+
+			self.video.stop_capture()
 
 	# ===============================
 
@@ -266,7 +284,6 @@ class RocketWindow(StatefulJoystick):
 			self.toggle_laser_button.show()
 		else:
 			self.toggle_laser_button.hide()
-
 
 	# ===============================
 
@@ -486,7 +503,6 @@ class RocketWindow(StatefulJoystick):
 			launcher.stop_movement()
 
 		gtk.main_quit()
-
 
 	# ===============================
 

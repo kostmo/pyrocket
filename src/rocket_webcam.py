@@ -35,7 +35,7 @@ class VideoWindow(gtk.Frame):
 		# -----------------------------------
 
 		self.video_enabled_button = gtk.ToggleButton("Enable Video")
-		self.video_enabled_button.connect('clicked', self.cb_toggle_video)
+		self.video_enabled_button.connect("clicked", self.cb_toggle_video)
 		master_vbox.pack_start(self.video_enabled_button, False, False)
 
 		# -----------------------------------
@@ -48,11 +48,16 @@ class VideoWindow(gtk.Frame):
 
 		self.capture = None
 
+
+		master_vbox.show_all()
+
+	# -----------------------------------
+
+	def start_video(self):
+
 		device = 0
 		self.start_capture(device)
 		self.initialize_video()
-
-		master_vbox.show_all()
 
 	# -----------------------------------
 
@@ -73,6 +78,8 @@ class VideoWindow(gtk.Frame):
 	def stop_capture(self):
                 if self.capture:
                         cv.cvReleaseCapture( self.capture )
+
+		self.capture = None
 
 	# -----------------------------------
 
@@ -123,8 +130,6 @@ class VideoWindow(gtk.Frame):
 
 
 
-
-
 		if False:
 			# PROCESS WEBCAM FRAME HERE...
 			inputImage = cv.cvCreateImage(cv.cvGetSize(webcam_frame), cv.IPL_DEPTH_8U, 1)
@@ -146,18 +151,6 @@ class VideoWindow(gtk.Frame):
 				print "Sum:", mysum
 
 			cv.cvMerge( inputImage, inputImage, inputImage, None, self.display_frame )
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

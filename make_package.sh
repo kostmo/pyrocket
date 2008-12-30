@@ -14,3 +14,12 @@ chmod a+x debian/rules
 debuild
 cd ..
 rm -r pyrocket-0.5
+
+echo -n "Do you want to install the new .deb? [Y/n]"
+read character
+case $character in
+    [Yy] | "" ) echo "You responded in the affirmative."
+	sudo gdebi *.deb
+        ;;
+    * ) echo "Fine, then."
+esac

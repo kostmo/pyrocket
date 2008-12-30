@@ -13,7 +13,8 @@ from rocket_joystick import StatefulJoystick
 
 class RocketWindow(StatefulJoystick):
 
-	img_path = "/usr/share/pyrocket/"
+	appname = "pyrocket"
+	local_share_dir = "/usr/share/"
 
 	keymap = [65364, 65362, 65361, 65363]
 	button_labels = ["Down", "Up", "Left", "Right", "_Fire"]
@@ -26,7 +27,15 @@ class RocketWindow(StatefulJoystick):
 
 	# ===============================
 
-	def __init__(self):
+	def __init__(self, run_installed=True):
+
+		self.run_installed = run_installed
+
+		self.img_path = ""
+		self.doc_path = ""
+		if run_installed:
+			self.img_path = self.local_share_dir + self.appname + "/"
+			self.doc_path = self.local_share_dir + "doc/" + self.appname + "/"
 
 		self.status_message_list = [
 			"ALT+arrowkeys move!",
@@ -46,6 +55,7 @@ class RocketWindow(StatefulJoystick):
 		self.status_icon = gtk.status_icon_new_from_file( icon_path )
 		self.status_icon.set_visible( True )
 
+		self.window.set_resizable( False )
 		self.window.connect("delete_event", self.delete_event)
 		self.window.connect("key_press_event", self.handle_keyboard_press_event)
 		self.window.connect("key_release_event", self.handle_keyboard_release_event)
@@ -205,15 +215,19 @@ class RocketWindow(StatefulJoystick):
 
 		about_dialog = gtk.AboutDialog()
 		about_dialog.set_version("0.5")
-		about_dialog.set_logo( gtk.gdk.pixbuf_new_from_file("msnmissile.png") )
+		about_dialog.set_logo( gtk.gdk.pixbuf_new_from_file(self.img_path + "msnmissile.png") )
 		about_dialog.set_copyright(u"\u00A92008 Karl Ostmo")
 
-		license_file = open("LICENSE", "r")
+		if self.run_installed:
+			license_file = open(self.doc_path + "copyright", "r")
+		else:
+			license_file = open("debian/copyright", "r")
+
 		about_dialog.set_license( license_file.read() )
 		license_file.close()
 
 		about_dialog.set_authors(["Karl Ostmo"])
-		about_dialog.set_website("http://kostmo.ath.cx/software/pyrocket/")
+		about_dialog.set_website("http://pyrocket.googlecode.com/")
 
 		about_dialog.run()
 		about_dialog.destroy()
@@ -484,6 +498,6 @@ if __name__ == "__main__":
 	fullpath =  os.path.abspath(pathname)
 	os.chdir(fullpath)
 
-	launcher = RocketWindow()
+	launcher = RocketWindow(False)
 	launcher.main()
 

@@ -17,7 +17,7 @@ if __name__ == "__main__":
 	 sneak attacks).''',
 		author='Karl Ostmo',
 		author_email='kostmo@gmail.com',
-		url='http://kostmo.ath.cx/software/pyrocket/',
+		url='http://pyrocket.googlecode.com/',
 		version='0.5',
 		py_modules=['rocket_backend', 'rocket_frontend', 'rocket_webcam', 'rocket_joystick'],
 		scripts=['pyrocket'],

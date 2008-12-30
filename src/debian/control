@@ -7,11 +7,11 @@ Standards-Version: 3.8.0
 Build-Depends: debhelper (>= 5), python, cdbs (>= 0.4.49)
 Build-Depends-Indep: perl, python-support (>= 0.5.3)
 XB-Python-Version: ${python:Versions}
-Homepage: http://kostmo.ath.cx/software/pyrocket/
+Homepage: http://pyrocket.googlecode.com/
 
 Package: pyrocket
 Architecture: all
-Depends: ${python:Depends}, python-gtk2, python-usb, python-pygame, python-opencv
+Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-usb, python-pygame, python-opencv
 Description: control Striker II and Dream Cheeky USB Missile Launchers
  pyrocket is used to operate USB foam dart launchers. For some models, it has
  considerably more functionality than the drivers provided with the launchers.

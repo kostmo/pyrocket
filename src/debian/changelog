@@ -1,8 +1,8 @@
-pyrocket (0.5-0ubuntu1) jaunty; urgency=low
+pyrocket (0.6-0ubuntu1) jaunty; urgency=low
 
   * Initial Ubuntu package (LP: #242910)
   - Added man page (pyrocket.6)
   - Added debian/watch
   - Fixed description
 
- -- Karl Ostmo <kostmo@gmail.com>  Tue, 30 Dec 2008 18:08:55 -0600
+ -- Karl Ostmo <kostmo@gmail.com>  Tue, 30 Dec 2008 19:29:33 -0600

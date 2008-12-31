@@ -34,8 +34,20 @@ case $character in
     * ) echo "Fine, then."
 esac
 
-CHANGES_FILE=${DISTRIBUTABLE_NAME}_source.changes
 
+echo "Alternatively, I will upload a new release to Google Code."
+echo -n "Do you want me to? [Y/n]: "
+read character
+case $character in
+    [Yy] | "" ) echo "You responded in the affirmative."
+	wget http://support.googlecode.com/svn/trunk/scripts/googlecode_upload.py
+	chmod a+x googlecode_upload.py
+	./googlecode_upload.py -s "source code" -p $PROGNAME $DISTRIBUTABLE_NAME.orig.tar.gz
+	rm googlecode_upload.py
+    * ) echo "Fine, then."
+esac
+
+CHANGES_FILE=${DISTRIBUTABLE_NAME}_source.changes
 
 echo "You might want to run 'dput my-ppa $CHANGES_FILE' next"
 echo "-or-"

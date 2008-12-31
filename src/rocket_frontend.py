@@ -14,6 +14,7 @@ from rocket_joystick import StatefulJoystick
 class RocketWindow(StatefulJoystick):
 
 	appname = "pyrocket"
+	version = "0.6"
 	local_share_dir = "/usr/share/"
 
 	keymap = [65364, 65362, 65361, 65363]
@@ -232,7 +233,7 @@ class RocketWindow(StatefulJoystick):
 	def cb_about_dialog(self, widget):
 
 		about_dialog = gtk.AboutDialog()
-		about_dialog.set_version("0.5")
+		about_dialog.set_version( self.version )
 		about_dialog.set_logo( gtk.gdk.pixbuf_new_from_file(self.img_path + "msnmissile.png") )
 		about_dialog.set_copyright(u"\u00A92008 Karl Ostmo")
 

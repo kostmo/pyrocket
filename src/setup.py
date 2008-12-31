@@ -5,24 +5,27 @@ if __name__ == "__main__":
 	from distutils.core import setup
 	#from rocket_frontend import RocketWindow
 
-	setup(name='pyrocket',
-		description='Dream Cheeky Rocket Launcher Control',
-		long_description='''PyGTK control of the Dream Cheeky Rocket Launcher
-	 A PyGTK application to operate the Dream Cheeky Rocket Launcher from Linux,
-	 with all the functionality of the bundled Windows app and more! The .deb
-	 installer will give user-permissions to the USB device. Automatic detection of
-	 the launcher device and a joystick is performed at runtime. The device's limit
-	 switches are monitored via USB so as not to damage the turret motors. Several
-	 firing options are available, including continuous and pre-charge (for
-	 sneak attacks).''',
-		author='Karl Ostmo',
-		author_email='kostmo@gmail.com',
-		url='http://pyrocket.googlecode.com/',
-		version='0.5',
-		py_modules=['rocket_backend', 'rocket_frontend', 'rocket_webcam', 'rocket_joystick'],
-		scripts=['pyrocket'],
-	#	data_files=[(RocketWindow.img_path, ['joystick.svg', 'pyrocket.png'])]
-		data_files=[('share/pyrocket', ['joystick.svg', 'pyrocket.png', 'msnmissile.png'])]
+	setup(name="pyrocket",
+		description="control Striker II and Dream Cheeky USB Missile Launchers",
+		long_description="""pyrocket is used to operate USB foam dart launchers. It supports many models,
+and for some, has considerably more functionality than the drivers provided by
+the manufacturer. One may find it useful as a starting point for controlling
+other USB devices, or just for waging cubicle warfare.
+
+pyrocket automatically detects the launcher(s) and a joystick, and a video
+window is provided for webcam-enabled devices. pyrocket currently supports the
+"circus cannon", "original" and "webcam" USB Missile Launchers sold by Dream
+Cheeky, as well as the Striker II USB Laser Guided Missile Launcher marketed
+by Ninja Gizmos.""",
+		author="Karl Ostmo",
+		author_email="kostmo@gmail.com",
+		url="http://pyrocket.googlecode.com/",
+#		version=RocketWindow.version
+		version="0.6",
+		py_modules=["rocket_backend", "rocket_frontend", "rocket_webcam", "rocket_joystick"],
+		scripts=["pyrocket"],
+#		data_files=[(RocketWindow.img_path, ["joystick.svg", "pyrocket.png"])]
+		data_files=[("share/pyrocket", ["joystick.svg", "pyrocket.png", "msnmissile.png"])]
 	)
 
 # ====================================================

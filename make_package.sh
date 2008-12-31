@@ -1,19 +1,24 @@
 #!/bin/bash
-svn export src pyrocket-0.5.orig
-cd pyrocket-0.5.orig
-chmod a-x pyrocket.png pyrocket.xpm msnmissile.png
+
+PROGNAME=pyrocket
+VERSION=0.6
+RELEASE_NAME=$PROGNAME-$VERSION
+
+svn export src $RELEASE_NAME.orig
+cd $RELEASE_NAME.orig
+chmod a-x $PROGNAME.png $PROGNAME.xpm msnmissile.png
 rm -r icons
 rm -r debian
 cd ..
-svn export src pyrocket-0.5
-cd pyrocket-0.5
-chmod a-x pyrocket.png pyrocket.xpm msnmissile.png
+svn export src $RELEASE_NAME
+cd $RELEASE_NAME
+chmod a-x $PROGNAME.png $PROGNAME.xpm msnmissile.png
 rm -r icons
 chmod a-x debian/*
 chmod a+x debian/rules
 debuild
 cd ..
-rm -r pyrocket-0.5
+rm -r $RELEASE_NAME
 
 echo -n "Do you want to install the new .deb? [Y/n] "
 read character

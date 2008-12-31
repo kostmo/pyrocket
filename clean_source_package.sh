@@ -1,3 +1,8 @@
 #!/bin/bash
 
-rm pyrocket_0.5*
+PROGNAME=pyrocket
+VERSION=0.6
+DISTRIBUTABLE_NAME=${PROGNAME}_$VERSION
+
+
+rm $DISTRIBUTABLE_NAME*

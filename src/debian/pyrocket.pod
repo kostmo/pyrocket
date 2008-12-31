@@ -8,11 +8,13 @@ pyrocket
 
 =head1 DESCRIPTION
 
-B<pyrocket> is used to operate USB foam dart launchers. For some models, it has
-considerably more functionality than the drivers provided with the launchers.
+B<pyrocket> is used to operate USB foam dart launchers. It supports many models,
+and for some, has considerably more functionality than the drivers provided by
+the manufacturer. One may find it useful as a starting point for controlling
+other USB devices, or just for waging cubicle warfare.
 
-pyrocket automatically detects the launcher(s) and a joystick. For a webcam-
-enabled device, a video window is provided.
+pyrocket automatically detects the launcher(s) and a joystick. For a
+webcam-enabled device, a video window is provided.
 
 =head1 HARDWARE SUPPORT
 
@@ -66,6 +68,13 @@ This is a problem with the kernel driver.  Hopefully this will be fixed soon.
 
 B<Workaround:> Use a different webcam, possibly attached with rubber bands.
 Be creative.
+
+=item B<My gray rocket launcher doesn't work>
+
+The predecessor to the Striker II launcher has the same VID/PID, but uses
+different USB commands.  There is a program out there called "pymissile" that
+supposedly supports this launcher.  The original Striker launcher accepts
+batteries and lacks a laser.
 
 =back
 

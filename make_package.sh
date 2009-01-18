@@ -6,16 +6,12 @@ RELEASE_NAME=$PROGNAME-$VERSION
 
 svn export src $RELEASE_NAME.orig
 cd $RELEASE_NAME.orig
-chmod a-x $PROGNAME.png $PROGNAME.xpm msnmissile.png
 rm -r icons
 rm -r debian
 cd ..
 svn export src $RELEASE_NAME
 cd $RELEASE_NAME
-chmod a-x $PROGNAME.png $PROGNAME.xpm msnmissile.png
 rm -r icons
-chmod a-x debian/*
-chmod a+x debian/rules
 debuild
 cd ..
 rm -r $RELEASE_NAME

@@ -1,4 +1,2 @@
 version=3
-http://pyrocket.googlecode.com/files/pyrocket(.*)\.tar\.gz debian uupdate
-
-
+http://code.google.com/p/pyrocket/downloads/list http://pyrocket.googlecode.com/files/pyrocket_(.*)\.orig\.tar\.gz

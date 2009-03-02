@@ -10,7 +10,7 @@ if __name__ == "__main__":
 		long_description="""pyrocket is used to operate USB foam dart launchers. It supports many models,
 and for some, has considerably more functionality than the drivers provided by
 the manufacturer. One may find it useful as a starting point for controlling
-other USB devices, or just for waging cubicle warfare.
+other USB devices, or simply for waging cubicle warfare.
 
 pyrocket automatically detects the launcher(s) and a joystick, and a video
 window is provided for webcam-enabled devices. pyrocket currently supports the

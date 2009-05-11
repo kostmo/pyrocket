@@ -1,4 +1,4 @@
-pyrocket (0.6-0ubuntu1) jaunty; urgency=low
+pyrocket (0.6-0ubuntu1) karmic; urgency=low
 
   * Initial Ubuntu package (LP: #242910)
   - Added man page (pyrocket.6)

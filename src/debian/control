@@ -3,7 +3,7 @@ Section: electronics
 Priority: optional
 Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
 XSBC-Original-Maintainer: Karl Ostmo <kostmo@gmail.com>
-Standards-Version: 3.8.0
+Standards-Version: 3.8.1
 Build-Depends: debhelper (>= 5), python, cdbs (>= 0.4.49)
 Build-Depends-Indep: perl, python-support (>= 0.5.3)
 XB-Python-Version: ${python:Versions}

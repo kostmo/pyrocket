@@ -471,10 +471,10 @@ class RocketWindow:
 
 		# Terminate cylinder charging based on radio state
 		grp = self.stop_charge.get_group()
-		if grp[0].get_active():
+		if len(grp) > 0 and grp[0].get_active():
 			if prev_fire_state and not next_fire_state:
 				launcher.stop_movement()
-		elif grp[1].get_active():
+		elif len(grp) > 1 and grp[1].get_active():
 			if not prev_fire_state and next_fire_state:
 				launcher.stop_movement()
 

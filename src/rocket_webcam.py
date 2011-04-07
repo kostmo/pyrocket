@@ -77,7 +77,7 @@ class VideoWindow(gtk.Frame):
 
 	def stop_capture(self):
                 if self.capture:
-                        cv.cvReleaseCapture( self.capture )
+                        highgui.cvReleaseCapture( self.capture )
 
 		self.capture = None
 

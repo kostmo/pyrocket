@@ -27,9 +27,6 @@ class RocketManager:
 
 						print "Located", self.housing_colors[i], "Rocket Launcher device."
 
-						exit(1)	# FIXME
-
-
 						launcher = None
 						if i == 0:
 							launcher = OriginalRocketLauncher()

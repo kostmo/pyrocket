@@ -21,7 +21,7 @@ Description: control Striker II and Dream Cheeky USB Missile Launchers
  .
  pyrocket automatically detects the launcher(s) and a joystick, and a video
  window is provided for webcam-enabled devices. pyrocket currently supports the
- "circus cannon", "original" and "webcam" USB Missile Launchers sold by Dream
- Cheeky, as well as the Striker II USB Laser Guided Missile Launcher marketed
- by Ninja Gizmos.
+ "circus cannon", "original", "webcam", and "Storm O.I.C." USB Missile
+ Launchers sold by Dream Cheeky, as well as the Striker II USB Laser Guided
+ Missile Launcher marketed by Ninja Gizmos.
 

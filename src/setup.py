@@ -21,7 +21,7 @@ by Ninja Gizmos.""",
 		author_email="kostmo@gmail.com",
 		url="http://pyrocket.googlecode.com/",
 #		version=RocketWindow.version
-		version="0.6",
+		version="0.7",
 		py_modules=["rocket_backend", "rocket_frontend", "rocket_webcam", "rocket_joystick"],
 		scripts=["pyrocket"],
 #		data_files=[(RocketWindow.img_path, ["joystick.svg", "pyrocket.png"])]

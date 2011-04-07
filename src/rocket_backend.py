@@ -5,9 +5,9 @@ from time import sleep
 
 class RocketManager:
 
-	vendor_product_ids = [(0x1941, 0x8021), (0x0a81, 0x0701), (0x0a81, 0xff01), (0x1130, 0x0202)]
-	launcher_types = ["Original", "Webcam", "Wireless", "Striker II"]
-	housing_colors = ["green", "blue", "silver", "black"]
+	vendor_product_ids = [(0x1941, 0x8021), (0x0a81, 0x0701), (0x0a81, 0xff01), (0x1130, 0x0202), (0x2123,0x1010)]
+	launcher_types = ["Original", "Webcam", "Wireless", "Striker II", "OIC Webcam"]
+	housing_colors = ["green", "blue", "silver", "black", "gray"]
 
 	def __init__(self):
 		self.launchers = []
@@ -18,12 +18,17 @@ class RocketManager:
 
 		device_found = False
 
+
+
 		for bus in usb.busses():
 			for dev in bus.devices:
 				for i, (cheeky_vendor_id, cheeky_product_id) in enumerate(self.vendor_product_ids):
 					if dev.idVendor == cheeky_vendor_id and dev.idProduct == cheeky_product_id:
 
 						print "Located", self.housing_colors[i], "Rocket Launcher device."
+
+						exit(1)	# FIXME
+
 
 						launcher = None
 						if i == 0:
@@ -35,6 +40,8 @@ class RocketManager:
 							return '''The '''+self.launcher_types[i]+''' ('''+self.housing_colors[i]+''') Rocket Launcher is not yet supported.  Try the '''+self.launcher_types[0]+''' or '''+self.launcher_types[1]+''' one.'''
 						elif i == 3:
 							launcher = BlackRocketLauncher()
+						elif i == 4:
+							launcher = GrayRocketLauncher()
 
 						return_code = launcher.acquire( dev )
 						if not return_code:
@@ -56,8 +63,10 @@ If you just installed the .deb, you need to plug cycle the USB device now.  This
 the new permissions from the .rules file.'''
 
 
+
 		if not device_found:
 			return 'No USB Rocket Launcher appears\nto be connected.'
+
 
 # ============================================
 # ============================================
@@ -236,4 +245,31 @@ class BlackRocketLauncher(BlueRocketLauncher):
 	def check_limits(self):
 
 		return self.previous_limit_switch_states
+
+
+
+# ============================================
+# ============================================
+
+class GrayRocketLauncher(BlueRocketLauncher):
+
+	striker_commands = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40]
+	has_laser = False
+
+	# -----------------------------
+	def issue_command(self, command_index):
+
+		signal = self.striker_commands[command_index]
+
+		try:
+			self.handle.controlMsg(0x21,0x09, [0x02, signal, 0x00,0x00,0x00,0x00,0x00,0x00])
+
+		except usb.USBError:
+			pass
+
+	# -----------------------------
+	def check_limits(self):
+
+		return self.previous_limit_switch_states
+
 

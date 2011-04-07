@@ -11,10 +11,10 @@ from rocket_backend import RocketManager
 from rocket_webcam import VideoWindow
 from rocket_joystick import StatefulJoystick
 
-class RocketWindow(StatefulJoystick):
+class RocketWindow:
 
 	appname = "pyrocket"
-	version = "0.6"
+	version = "0.7"
 	local_share_dir = "/usr/share/"
 
 	keymap = [65364, 65362, 65361, 65363]
@@ -29,6 +29,9 @@ class RocketWindow(StatefulJoystick):
 	# ===============================
 
 	def __init__(self, run_installed=True):
+
+		self.joystick_state = StatefulJoystick()
+#		self.joystick_state = None
 
 		self.run_installed = run_installed
 
@@ -107,14 +110,6 @@ class RocketWindow(StatefulJoystick):
 
 		top_menu.append( help_menu )
 
-
-
-
-
-
-
-
-
 		# ----------------------------
 
 		self.video = VideoWindow()
@@ -122,8 +117,6 @@ class RocketWindow(StatefulJoystick):
 		vbox.pack_start(self.video, False, False)
 
 		# ----------------------------
-
-
 
 		self.joystick_hbox = gtk.HBox(False, 5)
 		vbox.pack_start(self.joystick_hbox, False, False)
@@ -138,6 +131,18 @@ class RocketWindow(StatefulJoystick):
 		self.joystick_hbox.pack_start(mini_joystick_vbox, False, False)
 
 		self.joystick_hbox.set_no_show_all(True)
+
+
+		if self.joystick_state:
+			if not self.joystick_state.joystick_init():
+				self.status_message_list.append("Try connecting a Joystick!")
+			else:
+				self.joystick_hbox.set_no_show_all(False)	# huh?
+				self.joystick_hbox.show_all()
+				self.joystick_name_label.set_text( self.joystick_state.joystick_object.get_name() )
+				print 'Joystick has %d axes and %d buttons' %(self.joystick_state.num_axes, self.joystick_state.num_buttons)
+
+
 
 		# ----------------------------        
 		control_hbox = gtk.HBox(False, 5)
@@ -206,12 +211,12 @@ class RocketWindow(StatefulJoystick):
 		self.connect_everything()
 		self.cb_select_new_launcher(self.laucher_id)
 
-		StatefulJoystick.__init__(self)
-
 
 		self.status_message_index = 1
 		self.last_message_id = None
 		self.cycle_status_message()
+
+		gobject.idle_add( self.limit_checker_loop )
 
 	# ===============================
 
@@ -298,7 +303,7 @@ class RocketWindow(StatefulJoystick):
 		self.last_message_id = self.status_bar.push(0, new_msg_text)
 
 		if not saved_id is None:
-			self.status_bar.remove(saved_id, (self.status_message_index-1) % len(self.status_message_list) + 1)
+			self.status_bar.remove_message(saved_id, (self.status_message_index-1) % len(self.status_message_list) + 1)
 		self.status_message_index += 1
 		gobject.timeout_add( self.status_message_timeout, self.cycle_status_message)
 
@@ -497,8 +502,8 @@ class RocketWindow(StatefulJoystick):
 		if self.video:
 			self.video.stop_capture()
 
-		if self.joystick_object:
-			self.joystick_object.quit()
+		if self.joystick_state and self.joystick_state.joystick_object:
+			self.joystick_state.joystick_object.quit()
 
 
 		for launcher in self.rocket_controller.launchers:

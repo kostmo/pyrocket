@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PROGNAME=pyrocket
-VERSION=0.6
+VERSION=0.7
 RELEASE_NAME=$PROGNAME-$VERSION
 
 svn export src $RELEASE_NAME.orig

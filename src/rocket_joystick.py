@@ -7,9 +7,7 @@ import gtk, gobject
 
 
 import pygame
-import pygame.display
-import pygame.joystick
-from pygame.locals import *
+#from pygame.locals import *
 
 # ==================================
 
@@ -28,9 +26,6 @@ class StatefulJoystick:
 		self.joystick_debug = False
 		self.joystick_object = None
 
-		self.joystick_init()
-		gobject.idle_add( self.limit_checker_loop )
-
     # ===============================
 
 	def joystick_init(self):
@@ -43,8 +38,7 @@ class StatefulJoystick:
 		joystick_count = pygame.joystick.get_count()	# get number of joysticks
 		print('%d joystick(s) connected' %joystick_count)
 		if not joystick_count:
-			self.status_message_list.append("Try connecting a Joystick!")
-			return
+			return False
 
 		self.joystick_object = pygame.joystick.Joystick(0)
 		self.joystick_object.init()
@@ -53,16 +47,14 @@ class StatefulJoystick:
 		self.num_buttons = self.joystick_object.get_numbuttons()
 
 
-		self.joystick_hbox.set_no_show_all(False)
-		self.joystick_hbox.show_all()
-		self.joystick_name_label.set_text( self.joystick_object.get_name() )
-		print 'Joystick has %d axes and %d buttons' %(self.num_axes, self.num_buttons)
 
 		self.prev_button_array = [0]*self.num_buttons
 		self.prev_movement_state = [0, 0]
 		self.prev_fire_button_state = 0
 
 		gobject.idle_add( self.joystick_event_loop )
+
+		return True
 
 	# ===============================
 
